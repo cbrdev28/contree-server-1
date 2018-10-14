@@ -2,7 +2,7 @@ import SocketIo from "socket.io-client";
 
 console.log("client.ts");
 
-const socket =  SocketIo("http://localhost:2828");
+const socket = SocketIo("http://localhost:2828");
 
 setTimeout(() => {
 	console.log("Ping!");
