@@ -1,0 +1,24 @@
+{
+	"compilerOptions": {
+		"alwaysStrict": true,
+		"noFallthroughCasesInSwitch": true,
+		"noImplicitAny": true,
+		"noImplicitReturns": true,
+		"noImplicitThis": true,
+		"noUnusedLocals": true,
+		"outDir": "dist",
+		"removeComments": true,
+		"strict": true,
+		"strictFunctionTypes": true,
+		"strictNullChecks": true,
+		"strictPropertyInitialization": true,
+		"target": "es6"
+	},
+	"include": [
+		"src/**/*.ts"
+	],
+	"exclude": [
+		"dist",
+		"node_modules"
+	]
+}
