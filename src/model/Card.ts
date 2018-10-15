@@ -1,9 +1,12 @@
 import { Suit } from "./Suit";
 
-type Color = "red" | "black";
+export enum CardColor {
+	Red,
+	Black,
+}
 
 export interface Card {
 	value: number;
-	color: Color;
+	color: CardColor;
 	suit: Suit;
 }
