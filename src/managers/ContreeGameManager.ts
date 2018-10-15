@@ -46,8 +46,13 @@ export class ContreeGameManager {
 		return this;
 	};
 
-	public removePlayer = (player: Player) => {
-		return null;
+	public removePlayer = (player: Player): ContreeGameManager => {
+		const players = this.contreeGame.players;
+		const indexRemovePlayer = players.indexOf(player);
+		if (indexRemovePlayer > -1) {
+			players.splice(indexRemovePlayer, 1);
+		}
+		return this;
 	};
 
 	// For proof of concept purpose and test an action: client sending a message

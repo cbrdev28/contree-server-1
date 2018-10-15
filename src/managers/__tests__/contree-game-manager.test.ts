@@ -21,11 +21,38 @@ test("it adds a player", () => {
 	};
 	const prevNumPlayers = manager.contreeGame.players.length;
 
-	// Action to test
+	// Action
 	const players = manager.addPlayer(testPlayer).contreeGame.players;
 
+	// Verify
 	expect(players.length).toEqual(prevNumPlayers + 1);
 
 	const foundPlayer = players.find(player => player.id === testPlayer.id);
 	expect(foundPlayer).not.toBeNull();
+});
+
+test("it removes player", () => {
+	// Predicates
+	const testPlayerToRemove: Player = {
+		id: 28,
+		name: "Francis",
+		hand: [],
+	};
+	const testPlayer2: Player = {
+		id: 29,
+		name: "Robert",
+		hand: [],
+	};
+	manager.addPlayer(testPlayerToRemove);
+	manager.addPlayer(testPlayer2);
+	const prevNumPlayers = manager.contreeGame.players.length;
+
+	// Action
+	const players = manager.removePlayer(testPlayerToRemove).contreeGame.players;
+
+	// Verify
+	expect(players.length).toEqual(prevNumPlayers - 1);
+
+	const removedPlayer = players.find(player => player.id === testPlayerToRemove.id);
+	expect(removedPlayer).toBeUndefined();
 });
