@@ -1,12 +1,20 @@
-import { ContreeGame } from "../model/ContreeGame";
 import { Player } from "../model/Player";
 
-export interface ContreeGameManager {
-	init: () => ContreeGame;
+export class ContreeGameManager {
+	public init = () => {
+		return null;
+	};
 
-	addPlayer: (player: Player) => ContreeGame;
-	removePlayer: (player: Player) => ContreeGame;
+	addPlayer = (player: Player) => {
+		return null;
+	};
+
+	removePlayer = (player: Player) => {
+		return null;
+	};
 
 	// For proof of concept purpose and test an action: client sending a message
-	setMessage: (message: string) => string;
+	setMessage = (message: string) => {
+		return null;
+	};
 }
