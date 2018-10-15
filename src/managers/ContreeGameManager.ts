@@ -5,16 +5,16 @@ export class ContreeGameManager {
 		return null;
 	};
 
-	addPlayer = (player: Player) => {
+	public addPlayer = (player: Player) => {
 		return null;
 	};
 
-	removePlayer = (player: Player) => {
+	public removePlayer = (player: Player) => {
 		return null;
 	};
 
 	// For proof of concept purpose and test an action: client sending a message
-	setMessage = (message: string) => {
+	public setMessage = (message: string) => {
 		return null;
 	};
 }
