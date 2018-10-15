@@ -4,31 +4,46 @@ import { Team } from "../model/Team";
 import { Deck } from "../model/Deck";
 
 import { DeckManager } from "./DeckManager";
+import { ContreeGame } from "../model/ContreeGame";
 
 export class ContreeGameManager {
-	private deckManager: DeckManager;
+	private _contreeGame?: ContreeGame;
+	private _deckManager: DeckManager;
 
 	constructor() {
-		this.deckManager = new DeckManager();
+		this._deckManager = new DeckManager();
 	}
 
-	public init = () => {
+	/** Getters */
+	get contreeGame(): ContreeGame {
+		return this.init();
+	}
+
+	/** Public */
+	public init = (): ContreeGame => {
+		if (this._contreeGame != null) {
+			return this._contreeGame;
+		}
+
 		const table: Table = {
 			board: [],
 		};
 		const teams: Team[] = [];
 		const players: Player[] = [];
-		const deck: Deck = this.deckManager.newDeck();
-		return {
+		const deck: Deck = this._deckManager.newDeck();
+
+		this._contreeGame = {
 			table,
 			teams,
 			players,
 			deck,
 		};
+		return this._contreeGame;
 	};
 
-	public addPlayer = (player: Player) => {
-		return null;
+	public addPlayer = (player: Player): ContreeGameManager => {
+		this.contreeGame.players.push(player);
+		return this;
 	};
 
 	public removePlayer = (player: Player) => {
@@ -39,4 +54,6 @@ export class ContreeGameManager {
 	public setMessage = (message: string) => {
 		return null;
 	};
+
+	/** Private */
 }

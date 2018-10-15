@@ -12,5 +12,5 @@ export interface ContreeGame {
 	bet?: Bet;
 
 	// For proof of concept purpose and test an action: client sending a message
-	message: string;
+	message?: string;
 }

@@ -1,8 +1,35 @@
 import { ContreeGameManager } from "../ContreeGameManager";
+import { Player } from "../../model/Player";
+
+let manager: ContreeGameManager;
+
+beforeEach(() => {
+	manager = new ContreeGameManager();
+	manager.init();
+});
 
 test("it returns non null after init", () => {
-	const manager = new ContreeGameManager();
-	const res = manager.init();
+	expect(manager.contreeGame).not.toBeNull();
+});
 
-	expect(res).not.toBeNull();
+test("it adds a player", () => {
+	// Predicates
+	const testPlayer: Player = {
+		id: 28,
+		name: "Francis",
+		hand: [],
+	};
+	const prevNumPlayers = manager.contreeGame.players.length;
+
+	// Action to test
+	const contreeGame = manager.addPlayer(testPlayer).contreeGame;
+
+	// Verification
+	expect(contreeGame).not.toBeNull();
+
+	const players = contreeGame.players;
+	expect(players.length).toEqual(prevNumPlayers + 1);
+
+	const foundPlayer = players.find(player => player.id === testPlayer.id);
+	expect(foundPlayer).not.toBeNull();
 });
