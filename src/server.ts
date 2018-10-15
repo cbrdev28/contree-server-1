@@ -1,6 +1,7 @@
 import Express from "express";
 import SocketIo from "socket.io";
 import Http from "http";
+import { Payload } from "./payload";
 
 console.log("server.ts");
 
@@ -13,6 +14,9 @@ socket.on("connection", client => {
 	console.log("Client connected");
 	client.on("message", mess => {
 		console.log("Message received:\n", JSON.stringify(mess));
+	});
+	client.on("payload", (payload: Payload) => {
+		console.log("Payload received:\n", JSON.stringify(payload));
 	});
 	client.on("disconnect", () => {
 		console.log("Client disconnected");
