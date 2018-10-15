@@ -9,8 +9,7 @@ export interface ContreeGame {
 	teams: Team[];
 	players: Player[];
 	deck: Deck;
-	bet: Bet;
-	dealer: Player;
+	bet?: Bet;
 
 	// For proof of concept purpose and test an action: client sending a message
 	message: string;
