@@ -11,4 +11,7 @@ export interface ContreeGame {
 	deck: Deck;
 	bet: Bet;
 	dealer: Player;
+
+	// For proof of concept purpose and test an action: client sending a message
+	message: string;
 }
