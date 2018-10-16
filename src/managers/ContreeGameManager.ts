@@ -2,21 +2,32 @@ import { Player } from "../model/Player";
 import { Table } from "../model/Table";
 import { Team } from "../model/Team";
 import { Deck } from "../model/Deck";
-
-import { DeckManager } from "./DeckManager";
 import { ContreeGame } from "../model/ContreeGame";
+import {
+	PlayerGameState,
+	ContreeGameError,
+} from "./ContreeGameManagerDefs";
+import { DeckManager } from "./DeckManager";
+
 
 export class ContreeGameManager {
 	private _contreeGame?: ContreeGame;
 	private _deckManager: DeckManager;
+	private _currentMessage: string;
 
 	constructor() {
 		this._deckManager = new DeckManager();
+		this._currentMessage = "";
 	}
 
 	/** Getters */
 	get contreeGame(): ContreeGame {
 		return this.init();
+	}
+
+	/** Setters */
+	set currentMessage(message: string) {
+		this._currentMessage = message;
 	}
 
 	/** Public */
@@ -55,9 +66,22 @@ export class ContreeGameManager {
 		return this;
 	};
 
-	// For proof of concept purpose and test an action: client sending a message
-	public setMessage = (message: string) => {
-		return null;
+	public gameStateForPlayer = (givenPlayer: Player): PlayerGameState => {
+		const players = this.contreeGame.players;
+
+		const mainPlayer = players.find(player => player === givenPlayer);
+		if (mainPlayer == null) {
+			throw new ContreeGameError("Player not found");
+		}
+
+		const otherPlayers = players.filter(player => player !== givenPlayer);
+
+		const playerGameState: PlayerGameState = {
+			mainPlayer,
+			otherPlayers,
+			currentMessage: this._currentMessage,
+		};
+		return playerGameState;
 	};
 
 	/** Private */

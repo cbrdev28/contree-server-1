@@ -9,8 +9,9 @@ export interface ContreeGame {
 	teams: Team[];
 	players: Player[];
 	deck: Deck;
-	bet?: Bet;
 
-	// For proof of concept purpose and test an action: client sending a message
-	message?: string;
+	// This is dynamic? Computed during the game
+	// So it should probably not be here?
+	// Hence the fact that it's still marked optional...?
+	bet?: Bet;
 }

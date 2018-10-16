@@ -1,5 +1,6 @@
 import { ContreeGameManager } from "../ContreeGameManager";
 import { Player } from "../../model/Player";
+import { PlayerGameState } from "../ContreeGameManagerDefs";
 
 let manager: ContreeGameManager;
 
@@ -55,4 +56,30 @@ test("it removes player", () => {
 
 	const removedPlayer = players.find(player => player.id === testPlayerToRemove.id);
 	expect(removedPlayer).toBeUndefined();
+});
+
+test("it returns game state for a given player", () => {
+	// Predicates
+	const testPlayerGameState: Player = {
+		id: 28,
+		name: "Francis",
+		hand: [],
+	};
+	const otherPlayer: Player = {
+		id: 29,
+		name: "Robert",
+		hand: [],
+	};
+	manager.addPlayer(testPlayerGameState);
+	manager.addPlayer(otherPlayer);
+
+	// Action
+	const gameState: PlayerGameState = manager.gameStateForPlayer(testPlayerGameState);
+
+	// Verify
+	expect(gameState.mainPlayer.id).toEqual(28);
+	expect(gameState.otherPlayers.length).toEqual(1);
+	expect(gameState.otherPlayers.find(player => player === otherPlayer)).not.toBeNull();
+	expect(gameState.otherPlayers.find(player => player === testPlayerGameState)).toBeUndefined();
+	expect(gameState.currentMessage).toEqual("");
 });
