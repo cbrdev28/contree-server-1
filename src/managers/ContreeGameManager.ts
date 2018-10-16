@@ -69,7 +69,7 @@ export class ContreeGameManager {
 	public gameStateForPlayer = (givenPlayer: Player): PlayerGameState => {
 		const players = this.contreeGame.players;
 
-		const mainPlayer = players.find(player => player === givenPlayer);
+		const mainPlayer = players.find(player => player.id === givenPlayer.id);
 		if (mainPlayer == null) {
 			throw new ContreeGameError("Player not found");
 		}

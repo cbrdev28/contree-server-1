@@ -1,7 +1,7 @@
 import { Card } from "./Card";
 
 export interface Player {
-	id: number;
+	id: string;
 	name: string;
 	hand: Card[];
 	teammate?: Player;

@@ -16,7 +16,7 @@ test("it returns non null after init", () => {
 test("it adds a player", () => {
 	// Predicates
 	const testPlayer: Player = {
-		id: 28,
+		id: "28",
 		name: "Francis",
 		hand: [],
 	};
@@ -35,12 +35,12 @@ test("it adds a player", () => {
 test("it removes player", () => {
 	// Predicates
 	const testPlayerToRemove: Player = {
-		id: 28,
+		id: "28",
 		name: "Francis",
 		hand: [],
 	};
 	const testPlayer2: Player = {
-		id: 29,
+		id: "29",
 		name: "Robert",
 		hand: [],
 	};
@@ -61,12 +61,12 @@ test("it removes player", () => {
 test("it returns game state for a given player", () => {
 	// Predicates
 	const testPlayerGameState: Player = {
-		id: 28,
+		id: "28",
 		name: "Francis",
 		hand: [],
 	};
 	const otherPlayer: Player = {
-		id: 29,
+		id: "29",
 		name: "Robert",
 		hand: [],
 	};
@@ -77,7 +77,7 @@ test("it returns game state for a given player", () => {
 	const gameState: PlayerGameState = manager.gameStateForPlayer(testPlayerGameState);
 
 	// Verify
-	expect(gameState.mainPlayer.id).toEqual(28);
+	expect(gameState.mainPlayer.id).toEqual(testPlayerGameState.id);
 	expect(gameState.otherPlayers.length).toEqual(1);
 	expect(gameState.otherPlayers.find(player => player === otherPlayer)).not.toBeNull();
 	expect(gameState.otherPlayers.find(player => player === testPlayerGameState)).toBeUndefined();

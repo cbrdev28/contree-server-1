@@ -1,3 +1,6 @@
 import { ContreeServer } from "./server/ContreeServer";
 
-ContreeServer.main();
+console.info("main.ts");
+
+const contreeServer = new ContreeServer();
+contreeServer.start();
