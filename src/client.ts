@@ -2,7 +2,7 @@ import SocketIo from "socket.io-client";
 
 console.log("client.ts");
 
-const socket = SocketIo("http://localhost:3333");
+const socket = SocketIo("http://localhost:28028");
 
 setTimeout(() => {
 	console.log("Sending message...");

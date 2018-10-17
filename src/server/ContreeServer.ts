@@ -8,7 +8,7 @@ import { Player } from "../model/Player";
 import { PlayerGameState } from "../managers/ContreeGameManagerDefs";
 
 export class ContreeServer {
-	private _port: string | number = process.env.PORT || 3333;
+	private _port: string | number = process.env.PORT || 28028;
 	private _expressApp: Express.Express;
 	private _httpServer: Http.Server;
 	private _ioSocket: SocketIo.Server;
@@ -26,6 +26,9 @@ export class ContreeServer {
 	}
 
 	public start = () => {
+		this._expressApp.get("/test", (req, res) => {
+			res.send("<div>Hello CBR Test</div>");
+		});
 		this._httpServer.listen(this._port, () => {
 			console.log("Listening on port:", this._port);
 		});
