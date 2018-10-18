@@ -6,5 +6,5 @@ export enum ContreeEvent {
 
 export enum ContreeAction {
 	BroadcastMessage = "BroadcastMessage",
-	SendGameState = "SendGameState",
+	GameState = "GameState",
 }

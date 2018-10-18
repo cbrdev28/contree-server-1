@@ -87,7 +87,7 @@ export class ContreeServer {
 
 	private updatePlayerGameSate = (playerSocket: SocketIo.Socket, playerGameState: PlayerGameState) => {
 		console.log("updatePlayerGameSate");
-		playerSocket.emit(ContreeAction.SendGameState, playerGameState);
+		playerSocket.emit(ContreeAction.GameState, playerGameState);
 	}
 
 	private playerFromClientSocket = (client: SocketIo.Socket): Player => {
